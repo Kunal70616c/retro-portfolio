@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Courier+New:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <audio src="theme.mp3" loop></audio>
     <div class="container">
         <div class="window-header">
             <span>🖥️ Kunal's Portfolio</span>
@@ -266,6 +267,20 @@
                 counter.textContent = `Visitor #: ${visitorCount.toString().padStart(6, '0')}`;
             }
         }, 5000);
+    </script>
+    <script>
+        const audio = document.querySelector('audio');
+        const nameElement = document.querySelector('h1');
+
+        nameElement.style.cursor = 'pointer'; // Optional: Change cursor to indicate clickable
+
+        nameElement.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        });
     </script>
 </body>
 </html>
