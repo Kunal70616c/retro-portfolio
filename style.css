@@ -4,6 +4,9 @@
 * {
     margin: 0;
     padding: 0;
+}
+
+* {
     box-sizing: border-box;
 }
 
@@ -20,6 +23,46 @@ body {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+/* Custom cursor container */
+#custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Allows clicking through the cursor element */
+    z-index: 9999; /* Ensure it's on top */
+    transition: transform 0.1s ease-out; /* Smooth movement */
+}
+
+/* Custom cursor SVG (old school pointer) */
+#custom-cursor svg {
+    width: 12px; /* Adjust size as needed */
+    height: 18px; /* Adjust size as needed */
+}
+
+#custom-cursor polygon {
+    fill: #00FF00; /* Vibrant Green fill */
+    stroke: #000000; /* Black outline */
+    stroke-width: 1;
+}
+
+/* Cursor trail */
+.cursor-trail {
+    position: fixed;
+    width: 4px; /* Size of trail dots */
+    height: 4px; /* Size of trail dots */
+    background-color: #00FF00; /* Green trail color */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998; /* Below the main cursor */
+    opacity: 0.8; /* Trail transparency */
+    transform: translate(-50%, -50%); /* Center the dot */
+    animation: fadeOutTrail 0.8s ease-out forwards; /* Fade out animation */
+}
+
+@keyframes fadeOutTrail {
+    to { opacity: 0; transform: translate(-50%, -50%) scale(0); }
 }
 
 .container {
@@ -145,7 +188,7 @@ body {
 
 .project h3 {
     color: #ff4000;
-    margin-bottom: 8px;
+    margin-bottom: 8px;    
 }
 
 .tech-stack {
@@ -167,7 +210,10 @@ body {
 
 .contact-info a {
     color: #0000ff;
-    text-decoration: underline;
+}
+
+.project a {
+    text-decoration: none;
 }
 
 .footer {
@@ -257,8 +303,8 @@ body {
 }
 
 .profile-pic {
-    width: 120px;
-    height: 120px;
+    width: min(200px, 40vw); /* Use a combination of fixed and viewport units for responsiveness */
+    height: min(250px, 40vw); /* Maintain aspect ratio */
     border: 4px outset #c0c0c0;
     background: linear-gradient(45deg, #ff69b4, #87ceeb);
     display: flex;
