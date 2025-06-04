@@ -252,51 +252,29 @@ body {
     animation: rotate 2s linear infinite;
 }
 
-.fire-gif {
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle, #ff4500, #ff6347, #ffa500);
-    display: inline-block;
-    margin: 0 5px;
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    animation: flame 1s ease-in-out infinite alternate;
-}
-
-.dancing-gif {
-    width: 35px;
-    height: 35px;
-    background: linear-gradient(45deg, #ff1493, #00ced1);
-    display: inline-block;
-    margin: 0 5px;
-    animation: dance 0.8s ease-in-out infinite;
-}
-
 .sparkle-gif {
     width: 30px;
     height: 30px;
-    background: radial-gradient(circle, #ffd700, #ffff00);
+    background-color: #ffcc00; /* Bright solid yellow */
     display: inline-block;
     margin: 0 5px;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%, 
+        79% 91%, 50% 70%, 21% 91%, 32% 57%, 
+        2% 35%, 39% 35%
+    );
     animation: sparkle 1.5s ease-in-out infinite;
 }
 
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+/* Sparkle pulse effect */
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
 }
-
-@keyframes flame {
-    0% { transform: scaleY(1) scaleX(1); }
-    100% { transform: scaleY(1.2) scaleX(0.8); }
-}
-
-@keyframes dance {
-    0%, 100% { transform: translateX(0) rotateZ(0deg); }
-    25% { transform: translateX(-3px) rotateZ(-5deg); }
-    75% { transform: translateX(3px) rotateZ(5deg); }
-}
-
 @keyframes sparkle {
     0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
     50% { transform: scale(1.3) rotate(180deg); opacity: 0.7; }
@@ -340,6 +318,33 @@ body {
     from { transform: translateX(100%); }
     to { transform: translateX(-100%); }
 }
+
+.blinking-text {
+    animation: blink 1s step-end infinite;
+}
+
+.marquee-text {
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.marquee-text span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.glitch-effect {
+    animation: glitch 0.5s linear infinite;
+}
+
+
 
 .skills-grid {
     display: grid;
